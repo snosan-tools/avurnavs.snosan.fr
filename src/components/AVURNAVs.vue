@@ -28,7 +28,7 @@ export default {
       show: true,
       zoom: 6,
       center:[48, -1.219482],
-      url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+      url:'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>',
       markers: [],
     }
