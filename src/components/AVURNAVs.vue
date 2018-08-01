@@ -2,6 +2,7 @@
   <div class="map">
     <l-map :zoom="zoom" :center="center">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+      <l-tile-layer :url="seaUrl" :attribution="seaAttribution"></l-tile-layer>
       <l-marker v-for="marker in markers" :key="marker.id"
         :visible="marker.visible"
         :lat-lng="marker.position">
@@ -28,9 +29,11 @@ export default {
       show: true,
       zoom: 6,
       center:[48, -1.219482],
-      url:'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>',
       markers: [],
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>',
+      seaUrl: 'https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png',
+      seaAttribution: '&copy; <a href="http://openseamap.org">OpenSeaMap</a>',
     }
   },
   methods: {
