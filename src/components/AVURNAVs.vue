@@ -46,7 +46,7 @@ export default {
   },
   created() {
     ["atlantique", "manche", "méditerranée"].forEach(region => {
-      axios.get(`https://avurnav.antoine-augusti.fr/avurnavs/regions/${region}`).then(response => {
+      axios.get(`https://premar.antoine-augusti.fr/?region=${region}`).then(response => {
         response.data.forEach(el => {
           this.markers.push({
             position: {
@@ -56,8 +56,6 @@ export default {
             visible: true,
             tooltip: `
               <b>${el['title']}</b>
-              <br/><br/>
-              ${el['content']}
               <br/><br/>
               Plus d'informations : <a href="${el['url']}">site de la préfecture maritime</a>.
               <br/><br/>
