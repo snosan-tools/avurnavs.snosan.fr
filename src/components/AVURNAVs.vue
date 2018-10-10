@@ -55,14 +55,18 @@ export default {
             },
             visible: true,
             tooltip: `
-              <b>${el['title']}</b>
-              <br/><br/>
-              ${el['content']}
-              <br/><br/>
-              Plus d'informations : <a href="${el['url']}">site de la préfecture maritime</a>.
-              <br/><br/>
-              Date de début : ${this.cleanDate(el['valid_from'])}<br/>
-              Date de fin : ${this.cleanDate(el['valid_until'])}<br/>
+              <div class="title">
+                ${el['title']}
+              </div>
+              <div class="block">
+                ${el['content']}
+              </div>
+              <div class="block small">
+                Dates prévues : ${this.cleanDate(el['valid_from'])} — ${this.cleanDate(el['valid_until'])}
+              </div>
+              <div class="more small">
+                Plus d'informations sur <a href="${el['url']}">le site de la préfecture maritime</a>.
+              </div>
               `
           })
         })
@@ -71,3 +75,23 @@ export default {
   },
 }
 </script>
+<style>
+  .title {
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid #0B3F94;
+    font-weight: bold;
+    margin-bottom: 1.5em;
+  }
+  .block {
+    border: 1px solid #efefef;
+    padding: 1em .5em;
+    margin-bottom: 1.5em;
+  }
+  .small {
+    font-size: .9em;
+  }
+  .more {
+    padding: 1em .5em;
+    color: #555;
+  }
+</style>
