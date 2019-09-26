@@ -5,6 +5,7 @@
       <l-tile-layer :url="seaUrl" :attribution="seaAttribution"></l-tile-layer>
       <l-marker v-for="marker in markers" :key="marker.id"
         :visible="marker.visible"
+        :icon="marker.icon"
         :lat-lng="marker.position">
         <l-popup :content="marker.tooltip" />
       </l-marker>
@@ -42,6 +43,25 @@ export default {
         return 'Inconnue'
       }
       return date
+    },
+    iconColor: function(date) {
+      if (date === null) {
+        return 'blue'
+      }
+      date = new Date(date)
+      const today = new Date()
+      if (today <= this.addDays(date, 2)) {
+        return 'red'
+      }
+      if (today <= this.addDays(date, 8)) {
+        return 'orange'
+      }
+      return 'blue'
+    },
+    addDays: function(date, days) {
+      let result = new Date(date)
+      result.setDate(result.getDate() + days)
+      return result
     }
   },
   created() {
@@ -54,6 +74,12 @@ export default {
               lat: el['latitude']
             },
             visible: true,
+            icon: L.icon({
+              iconRetinaUrl: `static/images/markers-${this.iconColor(el['valid_from'])}@2x.png`,
+              shadowRetinaUrl: 'static/images/markers-shadow@2x.png',
+              iconSize: [36, 46],
+              shadowSize: [34, 16],
+            }),
             tooltip: `
               <div class="title">
                 ${el['title']}
