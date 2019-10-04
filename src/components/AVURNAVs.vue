@@ -75,8 +75,8 @@ export default {
             },
             visible: true,
             icon: L.icon({
-              iconRetinaUrl: `static/images/markers-${this.iconColor(el['valid_from'])}@2x.png`,
-              shadowRetinaUrl: 'static/images/markers-shadow@2x.png',
+              iconUrl: `static/images/markers-${this.iconColor(el['valid_from'])}@2x.png`,
+              shadowUrl: 'static/images/markers-shadow@2x.png',
               iconSize: [36, 46],
               shadowSize: [34, 16],
             }),
